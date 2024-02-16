@@ -39,13 +39,35 @@ function handlerKeyboardButtonPress(event){
     if(playerPressed === expectedAlphabet){
         console.log('achire bhai achi');
         console.log('expected alphabet', expectedAlphabet);
+        // update score-----
+        const currentScoreById = document.getElementById('current-score');
+        const currentScoreText = currentScoreById.innerText;
+        const currentScore = parseInt(currentScoreText);
+        console.log(currentScore);
+        // increase score by one-----
+        const newScore = currentScore + 1;
+        // update score----
+        currentScoreById.innerText = newScore;
+
         removeBackgroundColorById(expectedAlphabet);
         continueGame();
     }
     else{
         console.log('ami nai');
-    }
 
+        // life update----
+        const currentLifeById = document.getElementById('current-life')
+        const currentLifeText = currentLifeById.innerText;
+        const currentLife = parseInt(currentLifeText);
+        const life = currentLife - 1;
+        currentLifeById.innerText = life;
+
+
+        if(life === 0){
+            gameOver();
+        }
+    
+    }
 }
 
 document.addEventListener('keyup', handlerKeyboardButtonPress);
@@ -57,3 +79,11 @@ function play(){
     showElementById('play-ground')
     continueGame()
 }
+
+function gameOver(){
+    hideElementId('play-ground');
+    showElementById('final-score');
+    
+}
+
+
