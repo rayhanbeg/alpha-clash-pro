@@ -24,6 +24,32 @@ setBackgroundColorById(alphabet)
 
 }
 
+function handlerKeyboardButtonPress(event){
+    const playerPressed = event.key;
+    console.log('Player Pressed', playerPressed);
+
+
+    // get the expected key----
+    const currentAlphatet = document.getElementById('current-alphabet')
+    const targetAlhpabet = currentAlphatet.innerText;
+    const expectedAlphabet = targetAlhpabet.toLocaleLowerCase();
+    console.log(playerPressed, expectedAlphabet);
+
+    // check matched or not---
+    if(playerPressed === expectedAlphabet){
+        console.log('achire bhai achi');
+        console.log('expected alphabet', expectedAlphabet);
+        removeBackgroundColorById(expectedAlphabet);
+        continueGame();
+    }
+    else{
+        console.log('ami nai');
+    }
+
+}
+
+document.addEventListener('keyup', handlerKeyboardButtonPress);
+
 
 
 function play(){
