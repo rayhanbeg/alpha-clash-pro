@@ -48,6 +48,9 @@ function handlerKeyboardButtonPress(event){
         const newScore = currentScore + 1;
         // update score----
         currentScoreById.innerText = newScore;
+        
+        
+
 
         removeBackgroundColorById(expectedAlphabet);
         continueGame();
@@ -76,14 +79,24 @@ document.addEventListener('keyup', handlerKeyboardButtonPress);
 
 function play(){
     hideElementId('home-screen');
-    showElementById('play-ground')
-    continueGame()
+    hideElementId('final-score');
+    showElementById('play-ground');
+
+    setTextElementById('current-life', 5)
+    setTextElementById('current-score', 0)
+
+    continueGame();
 }
 
 function gameOver(){
     hideElementId('play-ground');
     showElementById('final-score');
-    
+    // final result----
+    const finalResult = document.getElementById('current-score');
+    console.log(finalResult);
+    setTextElementById('final-result', finalResult);
+
+
 }
 
 
