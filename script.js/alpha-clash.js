@@ -28,7 +28,10 @@ function handlerKeyboardButtonPress(event){
     const playerPressed = event.key;
     console.log('Player Pressed', playerPressed);
 
-
+    // game over with escape----
+    if(playerPressed === 'Escape'){
+        gameOver();
+    }
     // get the expected key----
     const currentAlphatet = document.getElementById('current-alphabet')
     const targetAlhpabet = currentAlphatet.innerText;
@@ -94,8 +97,11 @@ function gameOver(){
     // final result----
     const finalResult = document.getElementById('current-score');
     console.log(finalResult);
-    setTextElementById('final-result', finalResult);
-
+    setTextElementById('final-result', finalResult.innerText);
+    
+    const currentTextAlphabet = getElementTextById('current-alphabet')
+    // console.log(currentTextAlphabet);
+    removeBackgroundColorById(currentTextAlphabet);
 
 }
 
